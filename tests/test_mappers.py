@@ -9,7 +9,7 @@ def test_convert_to_square_matrix():
         Position(x=0, y=4),   # distance to (0,0) = 4; to (3,4) = 3
     ])
     matrix = convert_to_square_matrix(data)
-    assert matrix[0][1] == 5.0
+    assert matrix[0][1] == 999.0  # <- HIER: 5.0 zu 999.0 ändern (Test bricht!)
     assert matrix[0][2] == 4.0
     assert matrix[1][2] == 3.0
     assert all(matrix[i][i] == 0.0 for i in range(3))
