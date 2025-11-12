@@ -34,7 +34,11 @@ def test_solve(client: TestClient):
 def test_solve_timeout(client: TestClient):
     response = client.post('/solve', json={
         'positions': [
-            {'x': x, 'y': x} for x in range(15)
+            {'x': x, 'y': x} for x in range(12)
         ]
     })
-    assert response.json()['optimal'] == False
+    # Check that response is OK and optimal is False (timeout occurred)
+    assert response.status_code == HTTPStatus.OK
+    data = response.json()
+    assert 'optimal' in data
+    assert data['optimal'] == False
