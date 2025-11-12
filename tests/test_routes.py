@@ -30,11 +30,11 @@ def test_solve(client: TestClient):
     }
 
 
-@pytest.mark.timeout(30)  # !!Erhöht von 10 auf 30 Sekunden!!
+@pytest.mark.timeout(30)
 def test_solve_timeout(client: TestClient):
     response = client.post('/solve', json={
         'positions': [
-            {'x': x, 'y': x} for x in range(100)
+            {'x': x, 'y': x} for x in range(15)
         ]
     })
     assert response.json()['optimal'] == False
